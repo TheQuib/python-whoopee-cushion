@@ -16,9 +16,9 @@ __location__ = os.path.realpath(
 )
 
 # Set variables to the script location + fileName
-fartFile1 = __location__ + '\\assets\\audio\\fart1.wav'
-fartFile2 = __location__ + '\\assets\\audio\\fart2.wav'
-fartFile3 = __location__ + '\\assets\\audio\\fart3.wav'
+fartFile1 = __location__ + '/assets/audio/fart1.wav'
+fartFile2 = __location__ + '/assets/audio/fart2.wav'
+fartFile3 = __location__ + '/assets/audio/fart3.wav'
 
 
 # Initialize pygame mixer
