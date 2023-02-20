@@ -1,9 +1,9 @@
+#!/usr/bin/python
+
 from flask import Flask, render_template, redirect
 import random
 import pygame
 import os
-
-app = Flask(__name__)
 
 # Set '__location__' variable to directory of script
 __location__ = os.path.realpath(
@@ -15,10 +15,15 @@ __location__ = os.path.realpath(
     )
 )
 
-# Set variables to the script location + fileName
+# Set location variables to the script location + fileName
 fartFile1 = __location__ + '/assets/audio/fart1.wav'
 fartFile2 = __location__ + '/assets/audio/fart2.wav'
 fartFile3 = __location__ + '/assets/audio/fart3.wav'
+
+staticPath = "/" + __location__ + '/static'
+
+# Create app
+app = Flask(__name__, static_url_path=staticPath)
 
 
 # Initialize pygame mixer
@@ -41,5 +46,10 @@ def fart():
     # Redirect back to the root directory
     return redirect("/")
 
+@app.errorhandler(404)
+def page_not_found():
+    return render_template('error.html'), 404
+
 # Run the app
-app.run(host='0.0.0.0', port=5000, debug=False)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000, debug=False)
